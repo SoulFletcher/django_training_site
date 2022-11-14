@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Страница в разработке</h1>
+<form action="{% url 'thanks_page' %}" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Отправить</button>
+</form>
+
+
+
+{% if data %}
+<table border="1px">
+    <tr>
+        <th>Id</th>
+        <th>Дата</th>
+        <th>Имя</th>
+        <th>Телефон</th>
+    </tr>
+    {% for obj in data %}
+    <tr>
+        <th>{{obj.id}}</th>
+        <th>{{obj.order_dt}}</th>
+        <th>{{obj.order_name}}</th>
+        <th>{{obj.order_phone}}</th>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+Пока пусто но ничего страшного ... всё будет
+{% endif %}
+</body>
+</html>
